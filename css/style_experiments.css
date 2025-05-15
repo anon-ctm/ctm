@@ -1,0 +1,254 @@
+
+  /* ============================== */
+/* Experiment Card Layout Styles */
+/* ============================== */
+
+.experiment-card {
+    /* --- Full Width Override --- */
+    margin: 0;
+    width: 100%;
+    position: relative; /* Needed for horizontal centering */
+    box-sizing: border-box; /* Include padding in width */
+    /* --- End Full Width Override --- */
+
+    margin-top: 2.5em; /* Space above card */
+    margin-bottom: 2.5em; /* Space below card */
+    padding: 1.5em 0; /* Vertical padding */
+    background-color: #fdfdfd; /* Slightly off-white background */
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+/* Inner container to manage content layout and max-width */
+.experiment-content {
+    display: flex;
+    flex-direction: row; /* Arrange columns horizontally */
+    flex-wrap: wrap; /* Allow columns to stack on small screens */
+    gap: 1.5em; /* Space between columns */
+
+    /* Constrain the content width within the full-bleed card */
+    max-width: 100%; /* Adjust as needed */
+    margin: 0 auto; /* Center the content area */
+    padding: 0 1.5em; /* Padding inside the content area */
+    box-sizing: border-box;
+}
+
+/* Styling for the three columns */
+.experiment-card .experiment-col-1,
+.experiment-card .experiment-col-2,
+.experiment-card .experiment-col-3 {
+    margin: 0;
+    flex: 1; /* Each column takes up equal space */
+    box-sizing: border-box;
+}
+
+/* --- Adjustments for Video Player inside Column 1 --- */
+
+/* Ensure video container and grid fit within their column */
+.experiment-col-1 .video-container,
+.experiment-col-1 .thumbnail-grid {
+     width: 100%; /* Make them fill their column */
+     max-width: none !important; /* Override specific max-widths set previously */
+     margin-left: 0;
+     margin-right: 0;
+     /* Container aspect ratio (e.g., 16:9) is still controlled by its padding-top */
+}
+
+/* Adjust thumbnail grid columns for the narrower space */
+.experiment-col-1 .thumbnail-grid {
+     display: grid; /* Ensure grid display */
+     /* Make columns responsive: fit as many as possible > ~60px wide */
+     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+     gap: 0px; /* Smaller gap */
+     padding: 1px;
+     /* background-color remains white */
+     /* margin-top: 10px; */ /* Adjust spacing below video if needed */
+}
+
+/* Optional: Ensure images in col 3 don't overflow */
+.experiment-col-3 img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Optional: helps with spacing */
+    margin-bottom: 0.5em; /* Optional: space below images */
+}
+
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Example breakpoint for tablets */
+    .experiment-content {
+        gap: 1em;
+        padding: 0 1em;
+    }
+    .experiment-card .experiment-col-1,
+    .experiment-card .experiment-col-2,
+    .experiment-card .experiment-col-3 {
+         min-width: 250px; /* Adjust min-width if needed */
+    }
+}
+
+@media (max-width: 767px) { /* Example breakpoint for phones */
+     .experiment-content {
+         flex-direction: column; /* Stack columns vertically */
+     }
+      .experiment-card .experiment-col-1,
+      .experiment-card .experiment-col-2,
+      .experiment-card .experiment-col-3 {
+          min-width: 100%; /* Allow columns to take full width when stacked */
+          margin-bottom: 1.5em; /* Add space between stacked columns */
+     }
+     .experiment-card .experiment-col-3 {
+         margin-bottom: 0; /* No extra margin after the last stacked column */
+     }
+     .experiment-col-1 .thumbnail-grid {
+         /* Can adjust minmax thumbnail size for mobile if needed */
+         grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+     }
+}
+
+
+
+
+
+/* ============================ */
+/* Figure Grid Styles (Col 2) */
+/* ============================ */
+
+.figure-grid {
+    display: grid;
+    /* Create 2 equal columns, resulting in a 2x2 grid for 4 items */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em; /* Adjust gap between figures as needed */
+    margin-top: 1.5em; /* Space above the grid */
+    margin-bottom: 1em; /* Space below the grid */
+    align-items: center; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Style for each figure block in the grid */
+.grid-figure {
+    margin: 0; /* Remove default figure margin */
+    padding: 0; /* Remove default padding */
+    /* Optional: Add border or background if desired */
+    /* border: 1px solid #ddd; */
+    /* background-color: #fff; */
+    /* padding: 0.5em; */
+}
+
+/* Style for images within the grid figures */
+.grid-figure img {
+    display: block; /* Prevents extra space below image */
+    width: 100%; /* Make image fill the grid cell width */
+    max-width: 100%; /* Prevent overflow */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #eee; /* Optional: slight border on image */
+}
+
+/* Style for captions within the grid figures */
+/* Adopted from your provided example and general figcaption styles */
+.figure-grid figcaption {
+    padding: 0.5em 0.2em; /* Padding top/bottom and left/right */
+    color: rgba(0, 0, 0, 0.65); /* Slightly adjusted color */
+    font-size: 12px;
+    line-height: 1.4em; /* Adjusted line height */
+    text-align: left; /* As per your example */
+    margin-top: 0.3em; /* Space between image and caption */
+}
+
+/* Optional: Style for bold text within caption like your example */
+.figure-grid figcaption b {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+
+/* Optional: Style for specific colored text like your example */
+.figure-grid figcaption .caption-highlight {
+    color: #FF6C00; /* Orange color from your example */
+    font-weight: bold; /* Make it bold too */
+}
+/* Example usage in HTML: <figcaption><span class="caption-highlight">Fig 1:</span> Rest of caption...</figcaption> */
+
+
+
+
+
+
+
+
+
+
+/* Figure Grid Container Styling */
+.figure-grid-container {
+    display: grid;                 /* Enable CSS Grid */
+    grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
+    gap: 15px;                     /* Space between grid items (adjust as needed) */
+    width: 60%;                    /* Desktop width */
+    margin: 25px auto;             /* Center the container horizontally, add vertical space */
+    padding: 0;                    /* Reset default padding if any */
+    box-sizing: border-box;
+  }
+  
+  /* Styling for individual grid items (figures) */
+  .figure-grid-container .grid-item {
+    margin: 0;                     /* Reset default figure margin */
+    padding: 0;                    /* Reset default figure padding */
+    border: 1px solid #ddd;        /* Optional: subtle border around items */
+    background-color: #f9f9f9;   /* Optional: slight background color */
+    display: flex;                 /* Use flexbox for content alignment within the item */
+    flex-direction: column;        /* Stack image and caption vertically */
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  /* Rule for the item that should span 2 columns */
+  .figure-grid-container .grid-item-span-2 {
+    grid-column: span 2;           /* Make this item occupy 2 columns */
+  }
+  /* Rule for the item that should span 2 columns */
+  .figure-grid-container .grid-item-span-3 {
+    grid-column: span 3;           /* Make this item occupy 2 columns */
+  }
+  
+  /* Styling for images within the grid items */
+  .figure-grid-container .grid-item img {
+    max-width: 100%;             /* Ensure image scales down to fit container */
+    height: auto;                  /* Maintain aspect ratio */
+    width: auto;
+    display: block;                /* Remove extra space below image */
+                                   /* Consider 'contain' if showing the whole image is crucial */
+  }
+  
+.caption-highlight {
+    color: #FF6C00; /* Orange color from your example */
+    font-weight: bold; /* Make it bold too */
+}
+  
+  
+  /* Responsive Adjustments for Mobile */
+  @media (max-width: 768px) {   /* Adjust breakpoint (e.g., 768px) as needed */
+    .figure-grid-container {
+      width: 95%;                  /* Mobile width */
+      /* Assuming 1fr for single column, adjust if 2fr was intended differently */
+      grid-template-columns: 1fr;
+      gap: 10px;                   /* Adjust gap for mobile */
+    }
+  
+    .figure-grid-container .grid-item {
+      float: none;           /* Ensure no floating */
+      display: flex;         /* Reassert the display type we want (or 'block') */
+      width: 85%;           /* Set width to less than 100% */
+      justify-self: center;  /* ADDED: Center the item horizontally within its grid track */
+    }
+  
+    /* Resetting the span for the specific item */
+    .figure-grid-container .grid-item-span-2 {
+      grid-column: span 1;   /* Explicitly set span to 1 */
+      /* justify-self: center; will also be inherited/applied here */
+    }
+    .figure-grid-container .grid-item-span-3 {
+      grid-column: span 1;   /* Explicitly set span to 1 */
+      /* justify-self: center; will also be inherited/applied here */
+    }
+  }

@@ -1,0 +1,226 @@
+/* Snippet Box Styling - REVISED BASE */
+.snippet-box {
+  width: 35%; /* Default width for larger screens */
+  background-color: #f9f9f9; /* Light grey - more neutral */
+  border: 1px solid #e0e0e0; /* Softer, thinner main border */
+  /* Side accent borders will be defined in variations or below */
+  border-radius: 4px;       /* Less pronounced rounding */
+  padding: 15px 20px;       /* Adjusted padding (top/bottom, left/right) */
+  margin: 25px auto;        /* Adjusted margin */
+  font-size: 0.85em;        /* Slightly larger base font for readability */
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Softer, more modern shadow */
+  position: relative; /* Useful for potential advanced styling or pseudo-elements */
+}
+
+.snippet-box .snippet-title {
+  margin-top: 0;
+  margin-bottom: 15px;        /* More space after title */
+  color: var(--btn-blue-bg);  /* Use your blue accent for the title */
+  font-size: 1.1em;           /* Relative to new snippet-box font-size (0.85em * 1.1) */
+  font-weight: bold;          /* For a prominent title */
+  padding-bottom: 8px;        /* Space for potential underline */
+  text-align: center;         /* User preference: Centered title */
+  text-transform: uppercase;  /* For "caps" feel, common for prominent titles */
+  letter-spacing: 0.5px;      /* Slight letter spacing for uppercase clarity */
+  /* border-bottom will be handled by variations or a common style if desired */
+}
+
+.snippet-box .snippet-content p {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.5;          /* Improved line height for readability */
+  color: #444;               /* Slightly darker text for better contrast on #f9f9f9 */
+}
+
+.snippet-box .snippet-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Variation 2: Focused Header Bar */
+.snippet-box {
+  padding-top: 0; /* Remove top padding as title background will handle it */
+  border-left: 1px solid #e0e0e0;  /* Revert to standard thin border */
+  border-right: 1px solid #e0e0e0; /* Revert to standard thin border */
+}
+
+.snippet-box .snippet-title {
+  background-color: var(--btn-blue-bg);
+  color: var(--btn-text-color); /* White text on blue background */
+  padding-top: 12px;    /* Padding inside the title's background area */
+  padding-bottom: 12px; /* Adjusted padding for background */
+  padding-left: 20px;   /* Match snippet box content padding */
+  padding-right: 20px;  /* Match snippet box content padding */
+  
+  /* Extend title background to edges of the snippet-box padding */
+  margin-left: -20px;  /* Counteract parent's left padding */
+  margin-right: -20px; /* Counteract parent's right padding */
+  /* margin-top is already 0 */
+
+  margin-bottom: 20px; /* More space after the colored header */
+  border-bottom: none; /* No underline needed with a background */
+  border-radius: 3px 3px 0 0; /* Round top corners of the title bar slightly (matches parent's top radius) */
+                               /* Assumes .snippet-box has border-radius: 4px;
+                                  Use 3px to be just inside. */
+}
+
+/* Responsive Adjustments (common for all options) */
+@media (max-width: 768px) {
+  .snippet-box {
+      width: 90%; /* Wider on smaller screens */
+      margin: 20px auto;
+      padding: 12px 15px;
+      font-size: 0.8em;
+  }
+  .snippet-box .snippet-title {
+      font-size: 1.0em; /* Adjust title size proportionally */
+      margin-bottom: 10px;
+  }
+}
+  
+  /* Optional: Clearfix if using floats */
+  /* You might need this on the element *after* the snippet box if you use float: right */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+
+.circled-number {
+    /* Shape & Appearance */
+    display: inline-flex;
+    align-items: center;          /* Vertically center content (the number) inside */
+    justify-content: center;
+
+    background-color: #fff200;     /* Your specified yellow */
+    border: 1.5px solid black;       /* Black border - adjust thickness (e.g., 2px) if needed */
+    border-radius: 50%;          /* This makes the square shape circular */
+    color: black;                  /* Black text color for the number */
+  
+    /* Sizing & Spacing */
+    width: 1.2em;                  /* Width of the circle (adjust as needed) */
+    height: 1.2em;                 /* Height of the circle (make equal to width) */
+    font-size: 0.8em;              /* Optional: make number slightly smaller than surrounding text */
+                                   /* to fit comfortably in the circle. Adjust as needed. */
+
+      /* --- KEY ADJUSTMENT for Line Spacing --- */
+    /* Vertical alignment is crucial for line height impact */
+    /* Experiment with these values: */
+    vertical-align: text-top;   /* Aligns top of circle with top of text ascenders */
+    /* it down relative to the baseline. Positive up. */
+    /* Start with values between -0.2em and -0.5em */
+  
+    /* Inline Alignment */
+    margin: 0 0.0em;               /* Optional: Adds a tiny bit of space around the circle */
+  }
+
+
+
+
+/* Basic styling for the legend table */
+.legend-table {
+  width: 100%; /* Make table use available width */
+  border-collapse: collapse; /* Nicer borders */
+  margin-top: 0.5em; /* Space between figure content (if any) and table */
+  font-size: 0.8em; /* Optional: Slightly smaller text in table */
+}
+
+.legend-table th,
+.legend-table td {
+  border: 1px solid #ccc; /* Cell borders */
+  padding: 0.1em 0.2em;   /* Padding inside cells (vertical, horizontal) */
+  text-align: left;     /* Align text to the left */
+  vertical-align: top;  /* Align content to the top of the cell */
+  line-height: 1.3em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+
+.legend-table th {
+  background-color: #f2f2f2; /* Light background for header row */
+  font-weight: bold;
+  vertical-align: middle; /* Center header text vertically */
+}
+
+
+.legend-table th:nth-child(1),
+.legend-table td:nth-child(1) {
+  /* ADD THIS: Prevents text from wrapping */
+  white-space: nowrap;
+  /* Width will now automatically adjust to be 'tight' around the content */
+}
+
+/* --- Style the SECOND column (Description) --- */
+.legend-table th:nth-child(2),
+.legend-table td:nth-child(2) {
+   /* Ensure wrapping is enabled (default) */
+   white-space: normal;
+   /* Width will automatically take up remaining space */
+}
+
+
+
+/* --- New Image-Table Layout --- */
+
+.image-table-layout {
+  display: flex;
+  /* Desktop: Align items vertically centered relative to each other */
+  /* Use 'flex-start' for top alignment, 'stretch' to make them equal height */
+  align-items: center;
+  /* Spacing between the image and table */
+  gap: 0.5em; /* Adjust gap as needed (e.g., 1em, 1.5em) */
+  /* Optional: Add padding around the whole container */
+  padding: 0em 0;
+  /* Allow wrapping in case intermediate sizes need it, though media query handles primary stacking */
+  flex-wrap: wrap;
+}
+
+.layout-item {
+  /* Desktop: Make items share space equally */
+  flex: 1;
+  /* Prevent items from becoming too small before stacking */
+  /* Adjust this based on your content, might not be needed */
+  min-width: 300px;
+  box-sizing: border-box; /* Include padding/border in element's total width/height */
+}
+
+/* Ensure images scale nicely within their container */
+.layout-item img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+}
+
+/* Ensure the table takes the width of its container */
+.layout-item .legend-table {
+  width: 100%;
+  /* Your existing .legend-table styles (borders, padding, etc.) */
+  /* Your column width/wrapping styles (e.g., white-space: nowrap on first column) */
+}
+
+
+/* --- Mobile Styling --- */
+/* Adjust breakpoint (768px) as needed */
+@media (max-width: 768px) {
+  .image-table-layout {
+    /* Stack items vertically on smaller screens */
+    flex-direction: column;
+    /* Stretch items to take full container width */
+    align-items: stretch;
+    /* Reduce gap for stacked layout if desired */
+    gap: 1.em;
+  }
+
+  .layout-item {
+    /* Ensure items take full width when stacked */
+    width: 100%;
+    /* Override flex: 1 behavior if it causes issues in column layout */
+    flex-basis: auto;
+    min-width: unset; /* Remove min-width on mobile */
+  }
+}
+
